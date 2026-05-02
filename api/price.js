@@ -11,10 +11,15 @@ export default async function handler(req, res) {
       return res.status(200).json(data);
     }
 
-    if (type === 'candles') {
-      const apiKey = process.env.TWELVE_API_KEY;
-      const url = `https://api.twelvedata.com/time_series?symbol=XAG/USD&interval=${interval}&outputsize=${outputsize}&apikey=${apiKey}`;
-      const r = await fetch(url);
+    if (type === 'ohlc') {
+      // Test what gold-api.com returns for OHLC
+      const r = await fetch('https://api.gold-api.com/price/XAG/ohlc');
+      const data = await r.json();
+      return res.status(200).json(data);
+    }
+
+    if (type === 'history') {
+      const r = await fetch('https://api.gold-api.com/price/XAG/history');
       const data = await r.json();
       return res.status(200).json(data);
     }
