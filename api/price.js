@@ -1,5 +1,3 @@
-export const config = { runtime: 'edge' };
-
 export default async function handler(req) {
   const url = new URL(req.url);
   const type = url.searchParams.get('type') || 'spot';
@@ -21,15 +19,21 @@ export default async function handler(req) {
       const interval = url.searchParams.get('interval') || '1min';
       const outputsize = url.searchParams.get('outputsize') || '100';
       const apiKey = process.env.TWELVE_API_KEY;
+      
+      if (!apiKey) {
+        return new Response(JSON.stringify({ error: 'API key not configured', env: Object.keys(process.env) }), { status: 500, headers });
+      }
 
       const tdUrl = `https://api.twelvedata.com/time_series?symbol=XAG/USD&interval=${interval}&outputsize=${outputsize}&apikey=${apiKey}`;
-      const r = await fetch(tdUrl, { cache: 'no-store' });
+      const r = await fetch(tdUrl);
       const data = await r.json();
       return new Response(JSON.stringify(data), { headers });
     }
 
-    return new Response(JSON.stringify({ error: 'type must be spot or candles' }), { status: 400, headers });
+    return new Response(JSON.stringify({ error: 'bad type' }), { status: 400, headers });
   } catch (e) {
     return new Response(JSON.stringify({ error: e.message }), { status: 500, headers });
   }
 }
+
+export const config = { runtime: 'edge' };
