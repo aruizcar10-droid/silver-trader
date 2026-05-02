@@ -1,6 +1,6 @@
 # Silver Trader - XAG/USD Intraday Simulator
 
-Simulador de trading intradía de plata con precio real cada 2 segundos.
+Simulador de trading intradía de plata con precio real cada 2 segundos. 
 
 ## Desplegar en Vercel (gratis, 5 minutos)
 
