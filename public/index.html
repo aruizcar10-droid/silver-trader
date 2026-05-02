@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,17 +8,14 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#0a0e17;--bg2:#111827;--bg3:#1a2234;--border:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;--green:#10b981;--green-bg:rgba(16,185,129,.12);--red:#ef4444;--red-bg:rgba(239,68,68,.12);--blue:#3b82f6;--mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif}
-html{font-size:14px}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
+html{font-size:14px}body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh}
 .app{max-width:1100px;margin:0 auto;padding:16px}
 .hdr{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border);margin-bottom:16px;flex-wrap:wrap;gap:8px}
 .hdr-left{display:flex;align-items:center;gap:12px}
 .logo{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#475569,#94a3b8);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:600;color:#0a0e17}
 .hdr h1{font-size:16px;font-weight:600}.hdr h1 span{color:var(--text3);font-weight:400;font-size:13px;margin-left:8px}
 .conn{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text3);font-family:var(--mono)}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--text3)}
-.dot.live{background:var(--green);animation:pulse 1.5s infinite}
-.dot.err{background:var(--red)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--text3)}.dot.live{background:var(--green);animation:pulse 1.5s infinite}.dot.err{background:var(--red)}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .price-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .px-main{font-family:var(--mono);font-size:34px;font-weight:600;letter-spacing:-1px;transition:color .15s}
@@ -41,13 +35,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 .chart-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px}
 .tf-buttons{display:flex;gap:4px;flex-wrap:wrap}
 .tf-btn{font-size:11px;padding:4px 10px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);border-radius:5px;cursor:pointer;font-family:var(--mono);transition:all .12s}
-.tf-btn:hover{color:var(--text2);border-color:var(--text3)}
-.tf-btn.active{background:rgba(59,130,246,.15);border-color:var(--blue);color:var(--blue)}
+.tf-btn:hover{color:var(--text2);border-color:var(--text3)}.tf-btn.active{background:rgba(59,130,246,.15);border-color:var(--blue);color:var(--blue)}
 .chart-hint{font-size:10px;color:var(--text3);font-family:var(--mono)}
 .chart-container{position:relative;height:300px;overflow:hidden;cursor:crosshair;user-select:none;border-radius:6px}
 canvas#chartCanvas{display:block}
 .crosshair-info{position:absolute;top:8px;left:8px;background:rgba(17,24,39,.92);border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-family:var(--mono);font-size:11px;color:var(--text2);pointer-events:none;display:none;line-height:1.7}
 .crosshair-info span{color:var(--text)}
+.mode-badge{font-size:10px;padding:2px 8px;border-radius:4px;font-family:var(--mono);margin-left:8px}
+.mode-live{background:var(--green-bg);color:var(--green)}.mode-hist{background:rgba(59,130,246,.1);color:var(--blue)}
 .order-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:12px}
 .orow{display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
 .orow label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;min-width:55px}
@@ -56,11 +51,8 @@ canvas#chartCanvas{display:block}
 .est{font-size:11px;color:var(--text3);font-family:var(--mono);margin-left:auto}
 .order-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .btn{border:none;padding:12px;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .12s}
-.btn:active{transform:scale(.97)}
-.btn-b{background:var(--green);color:#0a0e17}.btn-b:hover{filter:brightness(1.1)}
-.btn-s{background:var(--red);color:#fff}.btn-s:hover{filter:brightness(1.1)}
-.sm{font-size:11px;padding:5px 12px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);border-radius:6px;cursor:pointer;font-family:var(--mono)}
-.sm:hover{border-color:var(--text3);color:var(--text)}
+.btn:active{transform:scale(.97)}.btn-b{background:var(--green);color:#0a0e17}.btn-b:hover{filter:brightness(1.1)}.btn-s{background:var(--red);color:#fff}.btn-s:hover{filter:brightness(1.1)}
+.sm{font-size:11px;padding:5px 12px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);border-radius:6px;cursor:pointer;font-family:var(--mono)}.sm:hover{border-color:var(--text3);color:var(--text)}
 .sec-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .sec-t{font-size:13px;font-weight:500}.sec-c{font-size:11px;color:var(--text3);font-family:var(--mono)}
 .empty{text-align:center;padding:16px;color:var(--text3);font-size:12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
@@ -68,8 +60,7 @@ canvas#chartCanvas{display:block}
 .ps{font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;text-transform:uppercase}
 .ps.lg{background:var(--green-bg);color:var(--green)}.ps.sh{background:var(--red-bg);color:var(--red)}
 .pi{flex:1;color:var(--text2)}.pp{font-weight:500;min-width:75px;text-align:right}
-.hl{max-height:160px;overflow-y:auto}
-.hl::-webkit-scrollbar{width:4px}.hl::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.hl{max-height:160px;overflow-y:auto}.hl::-webkit-scrollbar{width:4px}.hl::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
 .hr{display:flex;align-items:center;gap:8px;padding:6px 12px;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--text2)}
 .ft{padding:10px 0;font-size:10px;color:var(--text3);line-height:1.6;border-top:1px solid var(--border);margin-top:8px}
 @media(max-width:640px){.metrics{grid-template-columns:repeat(2,1fr)}.orow{flex-direction:column;align-items:stretch}.orow input{width:100%}.price-card{flex-direction:column}}
@@ -81,6 +72,7 @@ canvas#chartCanvas{display:block}
     <div class="hdr-left"><div class="logo">Ag</div><h1>XAG/USD<span>intradía · live</span></h1></div>
     <div class="conn"><span class="dot" id="dot"></span><span id="connTxt">Conectando…</span></div>
   </div>
+
   <div class="price-card">
     <div>
       <div class="px-main" id="px">—</div>
@@ -89,24 +81,27 @@ canvas#chartCanvas{display:block}
     </div>
     <div class="ohlc-row"><span>O: <span id="oO">—</span></span><span>H: <span id="oH">—</span></span><span>L: <span id="oL">—</span></span><span>C: <span id="oC2">—</span></span></div>
   </div>
+
   <div class="metrics">
     <div class="m"><div class="m-l">Balance</div><div class="m-v" id="mB">$10,000.00</div></div>
     <div class="m"><div class="m-l">P&L abierto</div><div class="m-v" id="mO">+$0.00</div></div>
     <div class="m"><div class="m-l">P&L cerrado</div><div class="m-v" id="mC">+$0.00</div></div>
     <div class="m"><div class="m-l">Equity</div><div class="m-v" id="mE">$10,000.00</div></div>
   </div>
+
   <div class="chart-card">
     <div class="chart-top">
-      <div class="tf-buttons" id="tfBtns">
-        <button class="tf-btn active" data-td="1min" data-sz="120" data-isday="0">1m</button>
-        <button class="tf-btn" data-td="5min" data-sz="100" data-isday="0">5m</button>
-        <button class="tf-btn" data-td="10min" data-sz="100" data-isday="0">10m</button>
-        <button class="tf-btn" data-td="30min" data-sz="100" data-isday="0">30m</button>
-        <button class="tf-btn" data-td="1h" data-sz="100" data-isday="0">1h</button>
-        <button class="tf-btn" data-td="2h" data-sz="100" data-isday="0">2h</button>
-        <button class="tf-btn" data-td="4h" data-sz="80" data-isday="0">6h</button>
-        <button class="tf-btn" data-td="8h" data-sz="60" data-isday="0">12h</button>
-        <button class="tf-btn" data-td="1day" data-sz="60" data-isday="1">1D</button>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:8px">
+        <div class="tf-buttons" id="tfBtns">
+          <button class="tf-btn active" data-mode="live">Live</button>
+          <button class="tf-btn" data-mode="hist" data-range="5d">5D</button>
+          <button class="tf-btn" data-mode="hist" data-range="1mo">1M</button>
+          <button class="tf-btn" data-mode="hist" data-range="3mo">3M</button>
+          <button class="tf-btn" data-mode="hist" data-range="6mo">6M</button>
+          <button class="tf-btn" data-mode="hist" data-range="1y">1A</button>
+          <button class="tf-btn" data-mode="hist" data-range="2y">2A</button>
+        </div>
+        <span class="mode-badge mode-live" id="modeBadge">Ticks en vivo</span>
       </div>
       <span class="chart-hint">🖱 Scroll: zoom · Arrastrar: mover</span>
     </div>
@@ -119,37 +114,55 @@ canvas#chartCanvas{display:block}
       </div>
     </div>
   </div>
+
   <div class="order-card">
     <div style="font-size:13px;font-weight:500;margin-bottom:12px;display:flex;justify-content:space-between"><span>Nueva orden</span><span class="est" id="est">—</span></div>
     <div class="orow"><label>Onzas</label><input type="number" id="sz" value="100" min="1" step="1"><label>Spread ¢</label><input type="number" id="sp" value="2" min="0" step="0.5" style="width:70px"></div>
     <div class="order-btns"><button class="btn btn-b" id="bB">▲ LONG</button><button class="btn btn-s" id="bS">▼ SHORT</button></div>
   </div>
+
   <div style="margin-bottom:12px">
     <div class="sec-h"><span class="sec-t">Posiciones abiertas <span class="sec-c" id="posCount">(0)</span></span><button class="sm" id="bCA" style="display:none">Cerrar todo</button></div>
     <div id="posList"><div class="empty">Sin posiciones</div></div>
   </div>
+
   <div style="margin-bottom:12px">
     <div class="sec-h"><span class="sec-t">Historial <span class="sec-c" id="histCount">(0)</span></span><button class="sm" id="bReset">Reset cuenta</button></div>
     <div class="hl" id="histList"><div class="empty">Sin operaciones</div></div>
   </div>
-  <div class="ft">Spot: gold-api.com cada 2s · Histórico: TwelveData (XAG/USD) · Spread simulado · Mercado cerrado fines de semana</div>
+
+  <div class="ft">
+    Live spot: gold-api.com (cada 2s, gratis) · Histórico diario: Yahoo Finance SI=F (gratis, sin key) · Spread simulado · Mercado cerrado fines de semana
+  </div>
 </div>
+
 <script>
 (function(){
-const SK='xag6';
+const SK='xag7';
 const $=id=>document.getElementById(id);
 const fm=(v,d=2)=>(v<0?'-$':'$')+Math.abs(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
 const fp=v=>v==null?'—':'$'+v.toFixed(3);
 const fmtT=()=>{const d=new Date();return[d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>String(n).padStart(2,'0')).join(':')};
-const fmtDT=(ts,isDay)=>{const d=new Date(ts);const date=d.getDate()+'/'+(d.getMonth()+1);return isDay?date:date+' '+[d.getHours(),d.getMinutes()].map(n=>String(n).padStart(2,'0')).join(':');};
+const fmtDate=ts=>{const d=new Date(ts);return d.getDate()+'/'+(d.getMonth()+1)+'/'+String(d.getFullYear()).slice(2)};
 
-const S={lp:null,pp:null,so:null,bal:10000,cpnl:0,pos:[],hist:[],errs:0,candles:[],tdInterval:'1min',tdSize:120,isDay:false,candleW:10,candleGap:2,offsetX:0,dragging:false,dragStartX:0,dragStartOffset:0,mouseX:null,mouseY:null};
+const S={
+  lp:null,pp:null,so:null,
+  bal:10000,cpnl:0,pos:[],hist:[],errs:0,
+  // chart
+  candles:[],        // {t,o,h,l,c}
+  liveCandles:[],    // ticks accumulated this session
+  mode:'live',       // 'live' | 'hist'
+  candleW:12,candleGap:2,offsetX:0,
+  dragging:false,dragStartX:0,dragStartOffset:0,
+  mouseX:null,mouseY:null,
+};
 
 function ld(){try{const r=localStorage.getItem(SK);if(r){const s=JSON.parse(r);S.bal=s.b??10000;S.cpnl=s.c??0;S.pos=s.p??[];S.hist=s.h??[];}}catch(e){}}
 function sv(){try{localStorage.setItem(SK,JSON.stringify({b:S.bal,c:S.cpnl,p:S.pos,h:S.hist}));}catch(e){}}
 function spread(){return(parseFloat($('sp').value)||0)/100}
 function ba(){if(!S.lp)return{b:null,a:null};const h=spread()/2;return{b:S.lp-h,a:S.lp+h}}
 
+// ── SPOT ──────────────────────────────────────────────────────────
 async function fetchSpot(){
   try{
     const r=await fetch('/api/price?type=spot',{cache:'no-store'});
@@ -159,27 +172,45 @@ async function fetchSpot(){
     S.errs=0;S.pp=S.lp;S.lp=d.price;
     if(!S.so)S.so=d.price;
     $('dot').className='dot live';$('connTxt').textContent='LIVE · '+fmtT();
-    updateLastCandle(d.price);
-    renderPrice();renderPositions();renderMetrics();renderEst();drawChart();
-  }catch(e){S.errs++;if(S.errs>=3){$('dot').className='dot err';$('connTxt').textContent='Sin conexión…';}}
+    // update live candles
+    accumulateTick(d.price);
+    renderPrice();renderPositions();renderMetrics();renderEst();
+    if(S.mode==='live')drawChart();
+  }catch(e){
+    S.errs++;if(S.errs>=3){$('dot').className='dot err';$('connTxt').textContent='Sin conexión…';}
+  }
 }
 
-async function fetchCandles(){
+function accumulateTick(price){
+  const now=Date.now();
+  const CANDLE_MS=60*1000; // 1-minute live candles
+  if(!S.liveCandles.length){
+    S.liveCandles.push({t:now,o:price,h:price,l:price,c:price});
+  } else {
+    const last=S.liveCandles[S.liveCandles.length-1];
+    if(now-last.t < CANDLE_MS){
+      last.c=price;last.h=Math.max(last.h,price);last.l=Math.min(last.l,price);
+    } else {
+      S.liveCandles.push({t:now,o:price,h:price,l:price,c:price});
+      if(S.liveCandles.length>500)S.liveCandles.shift();
+    }
+  }
+}
+
+// ── HISTORICAL CANDLES ────────────────────────────────────────────
+async function fetchCandles(range){
   try{
-    const r=await fetch('/api/price?type=candles&interval='+S.tdInterval+'&outputsize='+S.tdSize,{cache:'no-store'});
+    const r=await fetch('/api/price?type=candles&range='+range,{cache:'no-store'});
     const d=await r.json();
-    if(d.status==='error'||!d.values)throw new Error(d.message||'no data');
-    S.candles=d.values.slice().reverse().map(v=>({t:new Date(v.datetime).getTime(),o:parseFloat(v.open),h:parseFloat(v.high),l:parseFloat(v.low),c:parseFloat(v.close)}));
+    if(!d.candles||!d.candles.length)throw new Error('no data');
+    S.candles=d.candles;
     scrollToEnd();drawChart();
-  }catch(e){console.warn('Candles:',e.message);}
+  }catch(e){
+    console.warn('Candles error:',e.message);
+  }
 }
 
-function updateLastCandle(price){
-  if(!S.candles.length)return;
-  const last=S.candles[S.candles.length-1];
-  last.c=price;last.h=Math.max(last.h,price);last.l=Math.min(last.l,price);
-}
-
+// ── CHART ─────────────────────────────────────────────────────────
 const canvas=$('chartCanvas');
 const ctx=canvas.getContext('2d');
 
@@ -188,9 +219,14 @@ function resizeCanvas(){
   canvas.width=c.clientWidth;canvas.height=c.clientHeight;drawChart();
 }
 
+function getCandles(){
+  return S.mode==='live'?S.liveCandles:S.candles;
+}
+
 function scrollToEnd(){
   const W=canvas.width||800;
-  const total=S.candles.length*(S.candleW+S.candleGap);
+  const data=getCandles();
+  const total=data.length*(S.candleW+S.candleGap);
   S.offsetX=Math.max(0,total-(W-60)*0.85);
 }
 
@@ -201,19 +237,20 @@ function drawChart(){
   ctx.clearRect(0,0,W,H);
   ctx.fillStyle='#111827';ctx.fillRect(0,0,W,H);
 
-  if(!S.candles.length){
+  const data=getCandles();
+  if(!data.length){
     ctx.fillStyle='#64748b';ctx.font='13px DM Sans';ctx.textAlign='center';
-    ctx.fillText('Cargando…',W/2,H/2);return;
+    ctx.fillText(S.mode==='live'?'Acumulando ticks… (espera unos segundos)':'Cargando histórico…',W/2,H/2);
+    return;
   }
 
   const step=S.candleW+S.candleGap;
   const visStart=Math.max(0,Math.floor(S.offsetX/step));
   const visCount=Math.ceil(CW/step)+2;
-  const vis=S.candles.slice(visStart,visStart+visCount);
+  const vis=data.slice(visStart,visStart+visCount);
   if(!vis.length)return;
 
-  const allH=vis.map(c=>c.h),allL=vis.map(c=>c.l);
-  let maxP=Math.max(...allH),minP=Math.min(...allL);
+  let maxP=Math.max(...vis.map(c=>c.h)),minP=Math.min(...vis.map(c=>c.l));
   const pad=(maxP-minP)*0.08||0.3;maxP+=pad;minP-=pad;
   const rng=maxP-minP||1;
   const toY=p=>TP+(1-(p-minP)/rng)*CH;
@@ -235,15 +272,14 @@ function drawChart(){
   vis.forEach((c,i)=>{
     if(i%labelEvery===0){
       const x=toX(i)+S.candleW/2;
-      ctx.fillText(fmtDT(c.t,S.isDay),x,H-6);
+      const label=S.mode==='live'?fmtT():fmtDate(c.t);
+      ctx.fillText(label,x,H-6);
     }
   });
 
   // candles
   vis.forEach((c,i)=>{
-    const x=toX(i);const isUp=c.c>=c.o;
-    const col=isUp?'#10b981':'#ef4444';
-    const cx=x+S.candleW/2;
+    const x=toX(i);const isUp=c.c>=c.o;const col=isUp?'#10b981':'#ef4444';const cx=x+S.candleW/2;
     ctx.strokeStyle=col;ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(cx,toY(c.h));ctx.lineTo(cx,toY(c.l));ctx.stroke();
     const bTop=toY(Math.max(c.o,c.c)),bBot=toY(Math.min(c.o,c.c));
@@ -269,10 +305,10 @@ function drawChart(){
     ctx.beginPath();ctx.moveTo(S.mouseX,TP);ctx.lineTo(S.mouseX,TP+CH);ctx.stroke();
     ctx.beginPath();ctx.moveTo(0,S.mouseY);ctx.lineTo(CW,S.mouseY);ctx.stroke();
     const hi=Math.floor((S.mouseX+S.offsetX)/step);
-    const hc=S.candles[hi];
+    const hc=data[hi];
     const info=$('crosshairInfo');
     if(hc){
-      $('chTime').textContent=fmtDT(hc.t,S.isDay);
+      $('chTime').textContent=S.mode==='live'?fmtT():fmtDate(hc.t);
       $('chO').textContent='$'+hc.o.toFixed(3);$('chH').textContent='$'+hc.h.toFixed(3);
       $('chL').textContent='$'+hc.l.toFixed(3);$('chC').textContent='$'+hc.c.toFixed(3);
       info.style.display='block';
@@ -280,7 +316,7 @@ function drawChart(){
   }else{$('crosshairInfo').style.display='none';}
 }
 
-// interactions
+// ── INTERACTIONS ──────────────────────────────────────────────────
 const cont=$('chartContainer');
 cont.addEventListener('mousedown',e=>{S.dragging=true;S.dragStartX=e.clientX;S.dragStartOffset=S.offsetX;cont.style.cursor='grabbing';});
 window.addEventListener('mousemove',e=>{
@@ -295,8 +331,8 @@ cont.addEventListener('wheel',e=>{
   const rect=cont.getBoundingClientRect();const mx=e.clientX-rect.left;
   const anchor=(mx+S.offsetX)/(S.candleW+S.candleGap);
   const factor=e.deltaY<0?1.18:0.85;
-  S.candleW=Math.max(2,Math.min(50,S.candleW*factor));
-  S.candleGap=Math.max(1,Math.round(S.candleW*0.2));
+  S.candleW=Math.max(2,Math.min(60,S.candleW*factor));
+  S.candleGap=Math.max(1,Math.round(S.candleW*0.15));
   S.offsetX=Math.max(0,anchor*(S.candleW+S.candleGap)-mx);
   clamp();drawChart();
 },{passive:false});
@@ -305,31 +341,41 @@ let lastDist=null;
 cont.addEventListener('touchstart',e=>{if(e.touches.length===1){S.dragging=true;S.dragStartX=e.touches[0].clientX;S.dragStartOffset=S.offsetX;}if(e.touches.length===2){lastDist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);}},{passive:true});
 cont.addEventListener('touchmove',e=>{
   if(e.touches.length===1&&S.dragging){S.offsetX=Math.max(0,S.dragStartOffset-(e.touches[0].clientX-S.dragStartX));clamp();drawChart();}
-  if(e.touches.length===2&&lastDist){const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);const f=dist/lastDist;S.candleW=Math.max(2,Math.min(50,S.candleW*f));S.candleGap=Math.max(1,Math.round(S.candleW*0.2));lastDist=dist;clamp();drawChart();}
+  if(e.touches.length===2&&lastDist){const dist=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);const f=dist/lastDist;S.candleW=Math.max(2,Math.min(60,S.candleW*f));S.candleGap=Math.max(1,Math.round(S.candleW*0.15));lastDist=dist;clamp();drawChart();}
 },{passive:true});
 cont.addEventListener('touchend',()=>{S.dragging=false;lastDist=null;});
 
-function clamp(){const W=canvas.width||800;const total=S.candles.length*(S.candleW+S.candleGap);S.offsetX=Math.min(Math.max(0,S.offsetX),Math.max(0,total-(W-60)*0.3));}
+function clamp(){const W=canvas.width||800;const data=getCandles();const total=data.length*(S.candleW+S.candleGap);S.offsetX=Math.min(Math.max(0,S.offsetX),Math.max(0,total-(W-60)*0.3));}
 
-// timeframe buttons
+// ── TIMEFRAME BUTTONS ─────────────────────────────────────────────
 $('tfBtns').querySelectorAll('.tf-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     $('tfBtns').querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    S.tdInterval=btn.dataset.td;S.tdSize=parseInt(btn.dataset.sz);S.isDay=btn.dataset.isday==='1';
-    S.candles=[];drawChart();fetchCandles();
+    S.mode=btn.dataset.mode;
+    const badge=$('modeBadge');
+    if(S.mode==='live'){
+      badge.textContent='Ticks en vivo';badge.className='mode-badge mode-live';
+      scrollToEnd();drawChart();
+    } else {
+      badge.textContent='Histórico Yahoo Finance';badge.className='mode-badge mode-hist';
+      S.candles=[];drawChart();
+      fetchCandles(btn.dataset.range);
+    }
   });
 });
 
+// ── PRICE DISPLAY ─────────────────────────────────────────────────
 function renderPrice(){
   const p=S.lp,pp=S.pp;
   $('px').textContent=fp(p);
   if(pp!=null){$('px').style.color=p>pp?'var(--green)':p<pp?'var(--red)':'';setTimeout(()=>$('px').style.color='',400);}
   const b=ba();$('bid').textContent=fp(b.b);$('ask').textContent=fp(b.a);$('tm').textContent=fmtT();
   if(S.so){const c=((p-S.so)/S.so)*100;const el=$('chg');el.textContent=(c>=0?'+':'')+c.toFixed(3)+'%';el.className='badge '+(c>0?'up':c<0?'dn':'fl');}
-  if(S.candles.length){const l=S.candles[S.candles.length-1];$('oO').textContent='$'+l.o.toFixed(3);$('oH').textContent='$'+l.h.toFixed(3);$('oL').textContent='$'+l.l.toFixed(3);$('oC2').textContent='$'+l.c.toFixed(3);}
+  if(S.liveCandles.length){const l=S.liveCandles[S.liveCandles.length-1];$('oO').textContent='$'+l.o.toFixed(3);$('oH').textContent='$'+l.h.toFixed(3);$('oL').textContent='$'+l.l.toFixed(3);$('oC2').textContent='$'+l.c.toFixed(3);}
 }
 
+// ── TRADING ───────────────────────────────────────────────────────
 function renderEst(){if(!S.lp)return;const sz=parseFloat($('sz').value)||0,b=ba();$('est').textContent='Long: '+fm(sz*(b.a||0))+' · Short: '+fm(sz*(b.b||0));}
 function opnl(){if(!S.lp)return 0;const b=ba();return S.pos.reduce((s,p)=>{const x=p.s==='buy'?b.b:b.a;return s+(p.s==='buy'?(x-p.e)*p.z:(p.e-x)*p.z);},0);}
 function renderMetrics(){const o=opnl(),eq=S.bal+S.cpnl+o;$('mB').textContent=fm(S.bal);$('mO').textContent=(o>=0?'+':'')+fm(o);$('mO').style.color=o>=0?'var(--green)':'var(--red)';$('mC').textContent=(S.cpnl>=0?'+':'')+fm(S.cpnl);$('mC').style.color=S.cpnl>=0?'var(--green)':'var(--red)';$('mE').textContent=fm(eq);$('mE').style.color=eq>=S.bal?'var(--green)':'var(--red)';}
@@ -346,14 +392,13 @@ $('bReset').addEventListener('click',reset);
 $('sz').addEventListener('input',renderEst);
 $('sp').addEventListener('input',()=>{if(S.lp){renderPrice();renderPositions();renderMetrics();renderEst();}});
 
+// ── INIT ──────────────────────────────────────────────────────────
 ld();
 resizeCanvas();
 window.addEventListener('resize',resizeCanvas);
 renderPositions();renderMetrics();renderHistory();
-fetchCandles();
 fetchSpot();
 setInterval(fetchSpot,2000);
-setInterval(fetchCandles,60000);
 })();
 </script>
 </body>
