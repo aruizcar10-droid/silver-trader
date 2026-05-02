@@ -1,28 +1,26 @@
-export default async function handler(req) {
-  const url = new URL(req.url);
-  const type = url.searchParams.get('type') || 'spot';
+export default async function handler(req, res) {
+  const { type = 'spot', interval = '1min', outputsize = '100' } = req.query;
 
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Cache-Control': 'no-cache'
-  };
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'no-cache');
 
   try {
     if (type === 'spot') {
-      const r = await fetch('https://api.gold-api.com/price/XAG', { cache: 'no-store' });
+      const r = await fetch('https://api.gold-api.com/price/XAG');
       const data = await r.json();
-      return new Response(JSON.stringify(data), { headers });
+      return res.status(200).json(data);
     }
 
     if (type === 'candles') {
-      const interval = url.searchParams.get('interval') || '1min';
-      const outputsize = url.searchParams.get('outputsize') || '100';
       const apiKey = process.env.TWELVE_API_KEY;
-      const tdUrl = `https://api.twelvedata.com/time_series?symbol=XAG/USD&interval=${interval}&outputsize=${outputsize}&apikey=${apiKey}`;
-      const r = await fetch(tdUrl);
+      const url = `https://api.twelvedata.com/time_series?symbol=XAG/USD&interval=${interval}&outputsize=${outputsize}&apikey=${apiKey}`;
+      const r = await fetch(url);
       const data = await r.json();
-      return new Response(JSON.stringify(data), { headers });
+      return res.status(200).json(data);
     }
 
-    return new Response(JSON.stringify({ error: 'bad typ
+    return res.status(400).json({ error: 'bad type' });
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+}
